@@ -1,8 +1,17 @@
  <!-- Home. partial file  -->
-    <div class="row">
-        <div class="col-xs-12">
-        <p class="lead">
-            {{vm.message}}  
-            </p>
-            </div>
-    </div>
+
+<form>
+    <label>Food Truck Name:</label>
+    <input ng-model="vm.name" type="text"/>
+<br/>
+    <label>Today's Special:</label>
+    <textarea ng-model="vm.text" row="15" cols="80">
+    </textarea>
+<br/>
+    <input type="checkbox"  ng-model='vm.includeLocation' /> 
+    <label>Show location information</label>
+    <span ng-show="vm.includeLocation">{{vm.location.address}}</span>
+    <br/>
+    <button ng-click="vm.save()">Add</button> 
+</form>
+    
