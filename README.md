@@ -1,4 +1,8 @@
 ngFoodTruck
 ===========
 
-Demo application showcasing use of Angular Js and Firebase
+Sample application showcasing the use of Angular JS and Firebase and GeoFire. Read more at http://42id.com
+
+To run,
+
+$ git clone https://github.com/mchengal/ngFoodTruck.git
