@@ -30,7 +30,7 @@
 </div>
 
 <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12 col-md-6">
         <p>{{vm.message}}</p>
         <ul ng-repeat="i in vm.foodTrucks" class="list-unstyled bg-warning">
             <li class="text-primary lead">{{i.name}}</li>
@@ -38,5 +38,8 @@
             <li class="text-danger">{{i.address}}</li>
         </ul>
     </div>
+    <div class="col-xs-12 col-md-6">
+        <map-directive></map-directive>
+    </div>
 </div>
-    
+
