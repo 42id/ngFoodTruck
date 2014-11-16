@@ -1,6 +1,11 @@
 (function(){
 
     'use strict';
+    
+    /*
+    * Geolocation service
+    *-----------------------------------------------------
+    */
 
     angular.module('app').factory('geoLocationService', ['$q', '$http', function($q, $http){
         
@@ -63,5 +68,52 @@
         
         return service;
     }]);
+    
+    
+    
+    
+    
+    /*
+    * Firebase service
+    *-----------------------------------------------------
+    */    
+    
+    angular.module('app').factory('dataService', ['$firebase','$q', function($firebase,$q){
+        
+        var firebaseRef= new Firebase("https://popping-torch-4767.firebaseio.com/");
+
+        var getFirebaseRoot = function(){
+            return firebaseRef;
+        };
+        
+        var getFoodTruckNode = function(){
+            return getFirebaseRoot().child("FoodTrucks");   
+        }
+        
+        var addData = function(data){
+            // persist our data to firebase
+            var ref = getFoodTruckNode();
+            
+            return  $firebase(ref).$push(data);
+        };
+        
+        var getData = function(callback){
+            
+            var ref = getFoodTruckNode();
+            return $firebase(ref).$asArray();
+            
+        }
+
+        
+        var service = {
+            addData : addData,
+            getData: getData,
+            getFirebaseRoot: getFirebaseRoot            
+        };
+        
+        return service;
+        
+    }]);
+    
 
 })();

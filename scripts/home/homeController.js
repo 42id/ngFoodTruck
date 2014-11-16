@@ -5,7 +5,7 @@
     angular.module('app').controller('home', home);
 
     
-    function home(geoLocationService){
+    function home(geoLocationService, dataService){
 
         var vm =this;
         vm.includeLocation = true;
@@ -16,15 +16,19 @@
         init();
         
         function init(){
-            vm.message = "Hello from homeController init method";
+            
             geoLocationService.getLocation().then(function(result){
                 vm.location = result;
             });
+            
+            vm.message = dataService.getFirebaseRoot().toString();
+            
+            vm.foodTrucks = dataService.getData();
         }
         
         vm.save = function(){
             
-            // Implement our save function to persist data to Firebase
+            dataService.addData({name: vm.name, text: vm.text, address: vm.location.address});
             
         }
     }
